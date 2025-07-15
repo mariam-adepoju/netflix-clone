@@ -3,11 +3,26 @@ import search_icon from "../assets/search_icon.svg";
 import bell_icon from "../assets/bell_icon.svg";
 import profile_icon from "../assets/profile_img.png";
 import caret_icon from "../assets/caret_icon.svg";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { logout } from "../firebase";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const navref = useRef();
+  const dropdownRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!navref.current) return;
@@ -42,19 +57,26 @@ const Navbar = () => {
         <img src={search_icon} alt="search-icon" className="icons" />
         <p>Children</p>
         <img src={bell_icon} alt="bell-icon" className="icons" />
-        <div className="flex items-center gap-2.5 relative cursor-pointer group">
+        <div
+          className="flex items-center gap-2.5 relative cursor-pointer"
+          onClick={() => setIsOpen((prev) => !prev)}
+          ref={dropdownRef}
+        >
           <img src={profile_icon} alt="bell-icon" className="rounded-sm w-9" />
           <img src={caret_icon} alt="caret-icon" />
-          <div className="absolute hidden group-hover:block right-0 top-[100%] bg-[#191919] w-max rounded-xs py-4.5 px-5.5 underline">
-            <p
-              onClick={() => {
-                logout();
-              }}
-              className="text-sm cursor-pointer"
-            >
-              Sign Out of Netflix
-            </p>
-          </div>
+          {isOpen && (
+            <div className="absolute right-0 top-[100%] bg-[#191919] w-max rounded-xs py-4.5 px-5.5 underline">
+              <p
+                onClick={() => {
+                  logout();
+                  setIsOpen(false);
+                }}
+                className="text-sm cursor-pointer"
+              >
+                Sign Out of Netflix
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
