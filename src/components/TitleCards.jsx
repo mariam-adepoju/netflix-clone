@@ -29,7 +29,7 @@ const TitleCards = ({ title, category, className }) => {
   return (
     <div className={`mt-10 mb-0 md:mt-12.5 md:mb-7.5 ${className}`}>
       <h2 className="text-[15px] sm:text-[20px] md:text-2xl font-semibold mb-1">
-        {title ? title : "Popular on Netflix"}
+        {title ? title : "Popular on StreamBase"}
       </h2>
       <Swiper
         spaceBetween={10}

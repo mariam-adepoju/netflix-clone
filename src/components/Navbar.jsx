@@ -1,4 +1,3 @@
-import logo from "../assets/logo.png";
 import search_icon from "../assets/search_icon.svg";
 import bell_icon from "../assets/bell_icon.svg";
 import profile_icon from "../assets/profile_img.png";
@@ -43,7 +42,9 @@ const Navbar = () => {
       className=" w-full py-5 px-[4%] md:px-[6%] navbar fixed text-sm text-[#e5e5e5] bg-[linear-gradient(180deg,rgba(0,0,0,0.7)10%,transparent)] flex justify-between z-10"
     >
       <div className="flex items-center gap-12">
-        <img src={logo} alt="logo" className="w-22.5" />
+        <h2 className="text-red-600 font-bold font-barlow text-2xl">
+          StreamBase
+        </h2>
         <ul className="hidden md:flex items-baseline-last text-sm lg:text-base list-none gap-2.5 lg:gap-5">
           <li className="cursor-pointer">Home</li>
           <li className="cursor-pointer">TV Shows</li>
@@ -73,7 +74,7 @@ const Navbar = () => {
                 }}
                 className="text-sm cursor-pointer"
               >
-                Sign Out of Netflix
+                Sign Out of StreamBase
               </p>
             </div>
           )}

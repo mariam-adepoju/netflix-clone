@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "../assets/logo.png";
 import { login, signup } from "../firebase";
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
@@ -25,7 +24,9 @@ const Login = () => {
     </div>
   ) : (
     <div className="h-screen bg-[linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('/background_banner.jpg')] py-[15px] px-[5%] sm:py-5 sm:px-[8%]">
-      <img src={logo} alt="" className=" w-[150px]" />
+      <h2 className="text-red-600 font-bold font-barlow text-4xl">
+        StreamBase
+      </h2>
       <div className="w-full max-w-[450px] bg-[rgba(0,0,0,0.75)] rounded-sm sm:p-[60px] m-auto p-[20px] ">
         <h1 className="text-3xl font-medium mb-[28px]">{signState}</h1>
         <form>
@@ -79,7 +80,7 @@ const Login = () => {
         <div className="mt-10 text-[#737373]">
           {signState === "Sign In" ? (
             <p>
-              New to Netflix?
+              New to StreamBase?
               <span
                 onClick={() => {
                   setSignState("Sign Up");

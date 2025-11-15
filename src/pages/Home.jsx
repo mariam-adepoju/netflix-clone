@@ -45,7 +45,7 @@ const Home = () => {
       </div>
       <div className="pl-[4%] md:pl-[6%]">
         <TitleCards title={"Blockbuster Movies"} category={"top_rated"} />
-        <TitleCards title={"Only on Netflix"} category={"popular"} />
+        <TitleCards title={"Only on SteamBase"} category={"popular"} />
         <TitleCards title={"Upcoming"} category={"upcoming"} />
         <TitleCards title={"Top Picks for You"} category={"now_playing"} />
       </div>
